@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontrol Servo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Servo</title>
 </head>
 <body>
 
 <h1>Klik tombol untuk menggerakkan servo</h1>
-<button id="moveButton">Gerakkan Servo</button>
+<button onclick="moveServo(90)">90°</button>
+<button onclick="moveServo(45)">45°</button>
+<button onclick="moveServo(135)">135°</button>
 
 <script>
-document.getElementById("moveButton").addEventListener("click", function() {
-  // Mengirim permintaan HTTP GET ke ESP8266 untuk menggerakkan servo
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://192.168.1.9/move?angle=90", true); // Ganti <ESP8266_IP> dengan alamat IP ESP8266 Anda
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      alert("Servo bergerak!");
-    } else {
-      alert("Gagal menggerakkan servo.");
-    }
-  };
-  xhr.send();
-});
+function moveServo(angle) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/move?angle=' + angle, true);
+    xhr.send();
+}
 </script>
 
 </body>
