@@ -14,7 +14,7 @@
 document.getElementById("moveButton").addEventListener("click", function() {
   // Mengirim permintaan HTTP GET ke ESP8266 untuk menggerakkan servo
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://<ESP8266_IP>/move?angle=90", true); // Ganti <ESP8266_IP> dengan alamat IP ESP8266 Anda
+  xhr.open("GET", "http://192.168.1.9/move?angle=90", true); // Ganti <ESP8266_IP> dengan alamat IP ESP8266 Anda
   xhr.onload = function() {
     if (xhr.status === 200) {
       alert("Servo bergerak!");
